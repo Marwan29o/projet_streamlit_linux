@@ -1,7 +1,5 @@
 # 🚗 Application Streamlit de comparaison automobile
 
-lien vers la présentation : "https://claude.ai/public/artifacts/2ae379d8-e5f7-48c0-9738-22623d027160"
-
 Cette application Streamlit a été développée dans le cadre d’un projet de mise en œuvre d’un **Dashboard interactif** sur le **marché automobile**.  
 Elle permet de comparer différents modèles de voitures à partir de données générées et enrichies, avec une **dimension de géolocalisation** pour contextualiser les analyses par région.
 
