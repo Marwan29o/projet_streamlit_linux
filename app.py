@@ -160,41 +160,17 @@ CHANNEL_COLORS = {
 }
 
 # ===================== CONFIG =====================
-# Priorité : DATA_URL > GDRIVE_FILE_ID > fallback local
-GDRIVE_FILE_ID = os.getenv("GDRIVE_FILE_ID", "").strip()
-DATA_URL = os.getenv("DATA_URL", "").strip()
+DATA_PATH = "data/data.csv"   # Fichier généré par ton script Bash
 
-if DATA_URL:
-    DATA_PATH = DATA_URL
-elif GDRIVE_FILE_ID:
-    DATA_PATH = f"https://drive.google.com/uc?export=download&id={GDRIVE_FILE_ID}"
-else:
-    # Fallback local (à adapter si besoin)
-    st.error("Aucune source de données définie. Ajoute GDRIVE_FILE_ID ou DATA_URL dans .env.")
-
-# ===================== DATA =====================
 @st.cache_data(show_spinner=True)
 def load_data(path: str) -> pd.DataFrame:
-    # --- Cas 1 : URL (Google Drive / HTTP)
-    if path.startswith(("http://", "https://")):
-        st.info("Chargement des données depuis une source externe 🌐")
-        r = requests.get(path, timeout=30)
-        r.raise_for_status()
-        # Détection simple du séparateur (',' vs ';')
-        head = r.text[:2048]
-        sep_guess = ";" if head.count(";") > head.count(",") else ","
-        df = pd.read_csv(io.StringIO(r.text), sep=sep_guess)
-    else:
-        # --- Cas 2 : fichier local
-        if not os.path.exists(path):
-            raise FileNotFoundError(
-                f"Fichier introuvable: {path}. "
-                "Définis DATA_URL ou GDRIVE_FILE_ID dans ton .env."
-            )
-        # Si ton CSV local est en FR, ajuste sep/decimal si nécessaire
-        df = pd.read_csv(path)  # ex: pd.read_csv(path, sep=';', decimal=',')
+    if not os.path.exists(path):
+        st.error(f"❌ Fichier introuvable : {path}")
+        st.stop()
 
-    # --- Traitements communs
+    df = pd.read_csv(path)
+
+    # Convertir la date si présente
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
         df["month"] = df["date"].dt.to_period("M").astype(str)
@@ -208,7 +184,7 @@ def format_int(x):
 def pct(x): 
     return f"{100*x:.2f}%"
 
-# Appel de la fonction
+# Chargement du CSV local
 df = load_data(DATA_PATH)
 
 # ===================== SIDEBAR =====================

@@ -31,7 +31,6 @@ Conçue pour un **usage interne en entreprise**, l’application aide les équip
 ## ⚙️ Prérequis
 
 - **Docker**
-- **Python 3.12**
 
 > Aucune autre configuration n’est nécessaire. Le script charge automatiquement les variables d’environnement depuis le fichier `.env` inclus dans le projet (non versionné).
 
@@ -46,19 +45,24 @@ Conçue pour un **usage interne en entreprise**, l’application aide les équip
 2. **Se placer dans le dossier du projet**
    ```bash
    cd projet_streamlit_linux
+
+3. **Télécharger les données depuis Google Drive**
+   ```bash
+     bash data_collector/bin/get_data.sh
+
 3. **Lancer le script de déploiement**
    ```bash
      bash deploy.sh
 
 Le script :
 
-construit automatiquement l’image Docker,
+• construit automatiquement l’image Docker,
 
-exécute le conteneur Streamlit,
+• exécute le conteneur Streamlit,
 
-charge les variables d’environnement depuis .env,
+• prépare l'environnement,
 
-et démarre l’application
+• et démarre l’application
 
 ## 🌐 Accès à l’application
 Une fois le script lancé, ouvrez votre navigateur à l’adresse :
@@ -66,5 +70,8 @@ http://localhost:8501
 
 Tout est automatisé : aucune installation manuelle ni configuration supplémentaire.
 Pour arrêter le conteneur, utilisez Ctrl + C dans le terminal.
+
+
+
 
 
