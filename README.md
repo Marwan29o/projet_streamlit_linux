@@ -71,6 +71,25 @@ http://localhost:8501
 Tout est automatisé : aucune installation manuelle ni configuration supplémentaire.
 Pour arrêter le conteneur, utilisez Ctrl + C dans le terminal.
 
+### 🛑 Arrêter un conteneur Docker encore en cours d’exécution
+
+Si vous ne stoppez pas manuellement le conteneur Docker, **il continue de tourner en arrière-plan**, même après avoir fermé le terminal.  
+Cela peut bloquer le port 8501 et empêcher de relancer l’application.
+
+Voici comment le stopper proprement :
+
+1. **Lister les conteneurs actifs :**
+   ```bash
+   docker ps
+
+2. **Repérer l’ID du conteneur lié à l’application :**
+(colonne **CONTAINER ID**, généralement associé à l’image streamlit_cars).
+
+3. **Stopper le conteneur :**
+   ```bash
+   docker stop <ID_DU_CONTENEUR>
+
+
 
 
 
