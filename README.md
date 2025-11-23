@@ -89,7 +89,14 @@ Voici comment le stopper proprement :
    ```bash
    docker stop <ID_DU_CONTENEUR>
 
+### Accéder à l’application
 
+Une fois le script exécuté et l’application lancée, ouvre ton navigateur et va sur :
+
+**http://localhost:8501**
+
+**Ne pas utiliser http://0.0.0.0:8501.**
+Cette adresse n’est affichée que dans le terminal pour indiquer que le serveur écoute sur toutes les interfaces, mais elle ne fonctionne pas dans un navigateur.
 
 
 
