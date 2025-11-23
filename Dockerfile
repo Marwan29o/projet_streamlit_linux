@@ -5,7 +5,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     POETRY_VIRTUALENVS_CREATE=false
 WORKDIR /projet_final
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential cmake libgomp1 git \
+    build-essential \
+    gcc \
+    gfortran \
+    cmake \
+    libopenblas-dev \
+    liblapack-dev \
+    libgomp1 \
+    git \
  && rm -rf /var/lib/apt/lists/*
 RUN pip install poetry 
 COPY pyproject.toml poetry.lock ./
