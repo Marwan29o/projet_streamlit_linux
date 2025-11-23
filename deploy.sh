@@ -47,6 +47,13 @@ poetry install --no-root --no-interaction --no-ansi
 echo "Les dépendances ont été installées"
 echo
 
+#Construction de l'image docker
+echo "Construction de l'image docker"
+docker build -t streamlit_cars .
+echo "L'image docker a été construite"
+echo
+
+
 # Lancement de l'application 
 
 PORT="${PORT:-8501}"

@@ -160,7 +160,7 @@ CHANNEL_COLORS = {
 }
 
 # ===================== CONFIG =====================
-DATA_PATH = "data/data.csv"   # Fichier généré par ton script Bash
+DATA_PATH = "data.csv"   # Fichier généré par ton script Bash
 
 @st.cache_data(show_spinner=True)
 def load_data(path: str) -> pd.DataFrame:
