@@ -1,68 +1,24 @@
 #!/bin/bash
+set -e
 
-set -e 
+echo "=== Déploiement de l'application Streamlit ==="
 
-echo "Lancement du déploiement de l'application"
-echo 
-
-
-#Création d'un environnement virtuel s'il n'y en n'a pas
-
-if [[ ! -d ".venv" ]]; then  
-echo "Création de l'environnement virtuel"
-python3 -m venv .venv
+# 1) Vérifier Docker
+if ! command -v docker >/dev/null 2>&1; then
+    echo "ERREUR : Docker n'est pas installé sur cette machine."
+    echo "Veuillez installer Docker Desktop avant de lancer le script."
+    exit 1
 fi
-echo "L'environnement virtuel a été crée, passons à l'activation" 
-echo  
 
-
-
-#Activation de l'environnement virtuel 
-
-echo "Activation de l'environnement virtuel"
-source .venv/bin/activate
-echo "L'environnement virtuel est activé"
-echo
-
-
-
-#Vérifier si poetry est installé, sinon l'installer
-
-if ! command -v poetry ; then 
-echo "Poetry n'est pas installé. Installation en cours "
-python -m pip install --upgrade pip
-python -m pip install poetry 
-echo " Poetry a été installé"
-
-else 
-echo "Poetry est déjà installé, passons à l'installation des dépendances"
-fi 
-echo
-
-
-#Installation des dépendances 
-echo "Installation des dépendances"
-poetry install --no-root --no-interaction --no-ansi 
-
-echo "Les dépendances ont été installées"
-echo
-
-#Construction de l'image docker
-echo "Construction de l'image docker"
+# 2) Build Docker
+echo "Construction de l'image Docker..."
 docker build -t streamlit_cars .
-echo "L'image docker a été construite"
+
+echo "Image Docker construite avec succès."
 echo
 
-
-# Lancement de l'application 
-
+# 3) Lancement
 PORT="${PORT:-8501}"
-echo " Lancement de l'application streamlit"
+
+echo "Lancement de l'application sur http://localhost:$PORT"
 docker run -p "${PORT}:${PORT}" streamlit_cars
-
-
-
-
-
-
-  
