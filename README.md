@@ -1,11 +1,11 @@
-# 🚗 Application Streamlit de comparaison automobile
+# Application Streamlit de comparaison automobile
 
 Cette application Streamlit a été développée dans le cadre d’un projet de mise en œuvre d’un **Dashboard interactif** sur le **marché automobile**.  
 Elle permet de comparer différents modèles de voitures à partir de données générées et enrichies, avec une **dimension de géolocalisation** pour contextualiser les analyses par région.
 
 ---
 
-## 🧩 Fonctionnalités principales
+## I - Fonctionnalités principales
 
 1. **Analyse comparative des véhicules**  
    Filtrer, visualiser et comparer les modèles selon leurs caractéristiques (prix, puissance, consommation, kilométrage, carburant, etc.) et leur localisation géographique.
@@ -18,7 +18,7 @@ Elle permet de comparer différents modèles de voitures à partir de données g
 
 ---
 
-## 🎯 Objectif
+## II - Objectif
 
 Conçue pour un **usage interne en entreprise**, l’application aide les équipes marketing et commerciales à :
 - identifier les caractéristiques qui influencent réellement le comportement d’achat ;
@@ -64,7 +64,7 @@ Le script :
 
 • et démarre l’application
 
-## 🌐 Accès à l’application
+## III - Accès à l’application
 Une fois le script lancé, ouvrez votre navigateur à l’adresse :
 http://localhost:8501
 
