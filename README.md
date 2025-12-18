@@ -33,6 +33,7 @@ Conçue pour un **usage interne en entreprise**, l’application aide les équip
 - **Docker**
 
 > Aucune autre configuration n’est nécessaire. Le script charge automatiquement les variables d’environnement depuis le fichier `.env` inclus dans le projet (non versionné).
+**Important** : N'oubliez pas de **lancer l'application Docker Desktop** avant de passer aux étapes suivantes. Le script de déploiement échouera si Docker n'est pas actif.
 
 ---
 
