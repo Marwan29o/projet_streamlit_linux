@@ -40,7 +40,7 @@ Conçue pour un **usage interne en entreprise**, l’application aide les équip
 
 1. **Cloner le dépôt**
    ```bash
-   git clone <URL_DU_DEPOT>
+   git clone https://github.com/Marwan29o/projet_streamlit_linux.git
    
 2. **Se placer dans le dossier du projet**
    ```bash
